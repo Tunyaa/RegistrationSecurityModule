@@ -1,0 +1,20 @@
+package com.module.RegistrationSesurityModule.repository;
+
+import com.module.RegistrationSesurityModule.model.User;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ *
+ * @author tunyaa
+ */
+@Repository//$#
+public interface UserRepository extends JpaRepository<Long, User> {
+
+    Optional<User> findByUsername(String username);
+
+    boolean existByUsername(String username);
+
+    User save(User user);//$#
+}
