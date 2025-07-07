@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <nav th:fragment="nav">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li th:unless="${#authentication.isAuthenticated()}">
+                    <a href="/registration">Регистрация</a>
+                </li>
+                <li th:if="${#authentication.isAuthenticated()}">
+                    <a href="/users">Пользователи</a>
+                </li>
+                <li th:if="${#authentication.isAuthenticated()}">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Выйти</button>
+                    </form>
+                </li>
+                <li th:unless="${#authentication.isAuthenticated()}">
+                    <a href="/login">Вход</a>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>

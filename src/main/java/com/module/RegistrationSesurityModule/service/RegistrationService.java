@@ -2,14 +2,11 @@ package com.module.RegistrationSesurityModule.service;
 
 import com.module.RegistrationSesurityModule.model.User;
 import com.module.RegistrationSesurityModule.repository.UserRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
 
 /**
  *
@@ -17,17 +14,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
 public class RegistrationService {
 
-    @Autowired
     private final UserRepository userRepository;
-    @Autowired
+
     private final PasswordEncoder passwordEncoder;
 
     public void register(User user) {
-        if (userRepository.existByUsername(user.getUsername())) {
+        if (userRepository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("Username already exists!");
         }
 
