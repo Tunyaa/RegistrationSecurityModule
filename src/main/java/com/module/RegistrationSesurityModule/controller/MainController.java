@@ -40,7 +40,7 @@ public class MainController {
         return "registration";
     }
 
-    @PostMapping("registration")
+    @PostMapping("/registration")
     public String registrationUser(@Valid @ModelAttribute("user") User user,
             BindingResult result,
             Model model) {
@@ -57,18 +57,11 @@ public class MainController {
         }
     }
 
-    @GetMapping("users")
+    @GetMapping("/users")
     public String showUsers(Model model) {
         List<User> users = userRepository.findAll();
         model.addAttribute("users", users);
         return "users";
     }
 
-    @GetMapping("/login")
-    public String login(Principal principal, Model model) {
-        if (principal != null) {
-            model.addAttribute("username", principal.getName());
-        }
-        return "login";
-    }
 }
